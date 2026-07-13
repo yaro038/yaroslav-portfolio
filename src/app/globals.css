@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #070b16;
+  --bg-elevated: #12182a;
+  --ink: #f2f6ff;
+  --ink-muted: #8b95b0;
+  --line: rgba(0, 232, 240, 0.12);
+  --accent: #00e8f0;
+  --accent-soft: rgba(0, 232, 240, 0.14);
+  --cobalt: #6a7bff;
+  --surface: rgba(25, 30, 45, 0.72);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-cobalt: var(--cobalt);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #070b16;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.04;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 20%, rgba(106, 123, 255, 0.22), transparent 55%),
+    radial-gradient(ellipse 50% 42% at 88% 12%, rgba(0, 232, 240, 0.16), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 70% 85%, rgba(168, 85, 247, 0.1), transparent 50%),
+    linear-gradient(165deg, #0c1222 0%, #070b16 48%, #05070f 100%);
+}
+
+.section-pad {
+  position: relative;
+  z-index: 1;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+.display {
+  font-family: var(--font-syne), var(--font-outfit), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-x 42s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+  animation-duration: 48s;
+}
