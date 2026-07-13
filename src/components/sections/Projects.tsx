@@ -1,10 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/resume";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ProjectVisual } from "@/components/ui/ProjectVisual";
+import { TagList } from "@/components/ui/TagList";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,52 +50,44 @@ export function Projects() {
     <section
       id="projects"
       ref={root}
-      className="relative z-[1] overflow-hidden bg-bg"
+      className="relative z-[1] overflow-hidden border-t border-line"
     >
-      <div className="flex h-[100svh] flex-col justify-center py-16">
-        <div className="mb-8 flex items-baseline justify-between px-[clamp(1.25rem,4vw,3.5rem)]">
-          <div>
-            <p className="mb-2 font-mono text-xs text-accent">01 — WORK</p>
-            <h2 className="display text-[clamp(2rem,5vw,3.5rem)] text-ink">
-              Selected surfaces
-            </h2>
-          </div>
-          <p className="hidden text-sm text-ink-muted md:block">
-            Drag the scroll · {projects.length} pieces
-          </p>
-        </div>
+      <div className="flex min-h-[100svh] flex-col justify-center py-14 md:py-16">
+        <SectionHeader
+          index="02"
+          label="WORK"
+          title="Selected surfaces"
+          aside={`Scroll to explore · ${projects.length} pieces`}
+          className="section-pad mb-6 md:mb-8"
+        />
 
         <div
           ref={track}
-          className="flex w-max gap-6 px-[clamp(1.25rem,4vw,3.5rem)] will-change-transform md:gap-8"
+          className="section-pad flex w-max gap-6 will-change-transform md:gap-8"
         >
           {projects.map((project, index) => (
             <article
-              key={project.title + project.image}
-              className="group relative w-[min(82vw,520px)] shrink-0 md:w-[560px]"
+              key={project.title}
+              className="group relative w-[min(82vw,480px)] shrink-0 md:w-[520px]"
             >
-              <div className="relative aspect-[16/11] overflow-hidden border border-line bg-bg-elevated">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="560px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="mt-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-[10px] text-accent">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="display mt-1 text-2xl text-ink">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-ink-muted">{project.subtitle}</p>
-                </div>
-                <p className="max-w-[8rem] text-right text-[10px] uppercase tracking-[0.16em] text-ink-muted">
-                  {project.tags[0]}
+              <ProjectVisual
+                title={project.title}
+                subtitle={project.subtitle}
+                accent={project.accent}
+                index={index}
+              />
+              <div className="mt-4 border-t border-line pt-4">
+                <p className="font-mono text-[10px] text-accent">
+                  {String(index + 1).padStart(2, "0")} · {project.year} ·{" "}
+                  {project.role}
                 </p>
+                <h3 className="display mt-1 text-xl text-ink md:text-2xl">
+                  {project.title}
+                </h3>
+                <p className="mt-2 line-clamp-3 max-w-md text-sm leading-relaxed text-ink-muted">
+                  {project.description}
+                </p>
+                <TagList tags={project.tags} className="mt-3" />
               </div>
             </article>
           ))}

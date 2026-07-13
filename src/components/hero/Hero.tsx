@@ -16,13 +16,13 @@ export function Hero() {
         <HeroOrbScene />
       </div>
 
-      <div className="relative z-10 px-[clamp(1.25rem,4vw,3.5rem)]">
+      <div className="section-pad relative z-10">
         <div className="mb-8 flex items-end justify-between gap-6 border-b border-line pb-6">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.15 }}
-            className="max-w-xs text-sm leading-relaxed text-ink-muted"
+            className="max-w-sm text-sm leading-relaxed text-ink-muted"
           >
             {profile.title} · {profile.location}
           </motion.p>
@@ -44,27 +44,46 @@ export function Hero() {
         >
           {profile.name.split(" ")[0]}
           <br />
-          <span className="text-accent">{profile.name.split(" ").slice(1).join(" ")}</span>
+          <span className="text-accent">
+            {profile.name.split(" ").slice(1).join(" ")}
+          </span>
         </motion.h1>
 
-        <div className="mt-8 flex flex-col gap-6 md:mt-10 md:flex-row md:items-end md:justify-between">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease, delay: 0.45 }}
-            className="max-w-md text-base text-ink-muted md:text-lg"
-          >
-            {profile.headline}
-          </motion.p>
+        <div className="mt-8 flex flex-col gap-8 border-t border-line pt-8 md:mt-10 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease, delay: 0.45 }}
+              className="text-base text-ink-muted md:text-lg"
+            >
+              {profile.headline}
+            </motion.p>
+            <motion.ul
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease, delay: 0.55 }}
+              className="mt-5 flex flex-wrap gap-x-4 gap-y-2"
+            >
+              {profile.focus.map((item) => (
+                <li
+                  key={item}
+                  className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted"
+                >
+                  {item}
+                </li>
+              ))}
+            </motion.ul>
+          </div>
 
           <motion.a
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.55 }}
-            href="#projects"
+            transition={{ duration: 0.7, ease, delay: 0.6 }}
+            href="#intro"
             className="inline-flex items-center gap-3 text-sm font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-accent"
           >
-            Enter work
+            Read the brief
             <span className="text-accent">↓</span>
           </motion.a>
         </div>
