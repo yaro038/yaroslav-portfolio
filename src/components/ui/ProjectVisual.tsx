@@ -1,8 +1,11 @@
+import Image from "next/image";
+
 type ProjectVisualProps = {
   title: string;
   subtitle: string;
   accent: string;
   index: number;
+  image: string;
 };
 
 export function ProjectVisual({
@@ -10,42 +13,25 @@ export function ProjectVisual({
   subtitle,
   accent,
   index,
+  image,
 }: ProjectVisualProps) {
-  const shift = (index % 4) * 18;
-
   return (
-    <div
-      className="relative aspect-[16/10] overflow-hidden border border-line md:aspect-[16/11]"
-      style={{
-        background: `
-          radial-gradient(ellipse 70% 60% at ${22 + shift}% ${28 + (index % 3) * 12}%, ${accent}33, transparent 58%),
-          radial-gradient(ellipse 55% 50% at ${78 - shift}% ${72 - (index % 2) * 10}%, rgba(106,123,255,0.22), transparent 55%),
-          linear-gradient(155deg, #12182a 0%, #0a0f1c 55%, #070b16 100%)
-        `,
-      }}
-    >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(0,232,240,0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,232,240,0.08) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
-        }}
+    <div className="relative aspect-[16/10] overflow-hidden border border-line bg-bg-elevated md:aspect-[16/11]">
+      <Image
+        src={image}
+        alt={`${title} — ${subtitle}`}
+        fill
+        sizes="(max-width: 768px) 82vw, 520px"
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+        priority={index < 2}
       />
-      <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-7">
-        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
-          Surface {String(index + 1).padStart(2, "0")}
-        </p>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/80 via-bg/10 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
         <div>
-          <p
-            className="display text-[clamp(1.75rem,4vw,2.75rem)] text-ink transition-transform duration-700 group-hover:translate-x-1"
-            style={{ textShadow: "0 0 40px rgba(7,11,22,0.65)" }}
-          >
-            {title}
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+            Surface {String(index + 1).padStart(2, "0")}
           </p>
-          <p className="mt-2 max-w-sm text-sm text-ink-muted">{subtitle}</p>
+          <p className="display mt-1 text-xl text-ink md:text-2xl">{title}</p>
         </div>
       </div>
       <div

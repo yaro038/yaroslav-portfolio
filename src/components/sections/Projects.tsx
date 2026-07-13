@@ -75,6 +75,7 @@ export function Projects() {
                 subtitle={project.subtitle}
                 accent={project.accent}
                 index={index}
+                image={project.image}
               />
               <div className="mt-4 border-t border-line pt-4">
                 <p className="font-mono text-[10px] text-accent">

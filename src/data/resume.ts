@@ -256,6 +256,7 @@ export const projects = [
     year: "2025",
     tags: ["AI Vision", "OCR", "SaaS", "Node.js"],
     accent: "#00e8f0",
+    image: "/samples/Screenshot_1.png",
     featured: true,
   },
   {
@@ -273,6 +274,7 @@ export const projects = [
     year: "2024",
     tags: ["Next.js", "LLM", "Product", "Marketing"],
     accent: "#6a7bff",
+    image: "/samples/Screenshot_2.png",
     featured: true,
   },
   {
@@ -290,6 +292,7 @@ export const projects = [
     year: "2024",
     tags: ["React", "AI", "Dashboard", "TypeScript"],
     accent: "#00e8f0",
+    image: "/samples/Screenshot_3.png",
     featured: true,
   },
   {
@@ -307,6 +310,7 @@ export const projects = [
     year: "2024",
     tags: ["LLM", "UX", "Automation", "APIs"],
     accent: "#6a7bff",
+    image: "/samples/Screenshot_4.png",
     featured: false,
   },
   {
@@ -324,6 +328,7 @@ export const projects = [
     year: "2023",
     tags: ["Commerce", "Frontend", "UX", "Performance"],
     accent: "#00e8f0",
+    image: "/samples/Screenshot_5.png",
     featured: false,
   },
   {
@@ -341,6 +346,7 @@ export const projects = [
     year: "2023",
     tags: ["Marketing", "Health", "Web", "Next.js"],
     accent: "#6a7bff",
+    image: "/samples/Screenshot_6.png",
     featured: false,
   },
   {
@@ -358,6 +364,7 @@ export const projects = [
     year: "2022",
     tags: ["Catalog", "Design Systems", "Web", "UI"],
     accent: "#00e8f0",
+    image: "/samples/Screenshot_7.png",
     featured: false,
   },
 ];
